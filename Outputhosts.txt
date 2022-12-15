@@ -1,0 +1,10 @@
+nslookup urls.txt 
+DNS request timed out.
+    timeout was 2 seconds.
+Serveur :   UnKnown
+Address:  10.0.0.1
+
+DNS request timed out.
+    timeout was 2 seconds.
+DNS request timed out.
+    timeout was 2 seconds.

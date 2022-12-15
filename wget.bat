@@ -1,0 +1,1 @@
+wget.exe -i urls.txt -O results.txt -q -S
