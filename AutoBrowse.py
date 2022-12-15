@@ -1,23 +1,20 @@
+import os
 from selenium import webdriver
 import time
 import ssl
 import chromedriver_binary  # Adds chromedriver binary to path
+from selenium.common.exceptions import WebDriverException
 
-
-my_file = open("urls.txt", "r") 
-driver = webdriver.Chrome()
+my_file = open("urls-validated.txt", "r") 
+options = webdriver.ChromeOptions()
+options.add_argument('--ignore-certificate-errors')
+options.add_argument('--ignore-ssl-errors')
+driver = webdriver.Chrome(chrome_options=options)
 for i in range(1, 80):
 	for url in my_file:
-		driver.get(url)
-		time.sleep(1)
-	driver.close()
-
-
-driver = webdriver.Chrome()
-driver.get("http://www.google.com")
-time.sleep(2) # Let the user actually see something!
-search_box = driver.find_element_by_name('q')
-search_box.send_keys('coronavirus')
-search_box.submit()
-time.sleep(2) # Let the user actually see something!
-driver.close()
+     try:
+      driver.get(url)
+      time.sleep(1)
+    except WebDriverException:
+            print("page down")
+	driver.quit();
